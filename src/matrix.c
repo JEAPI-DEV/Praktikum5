@@ -91,11 +91,7 @@ matrix matrixDotMatrix(matrix MatrixA, matrix MatrixB) {
                         "MatrixA cols: %u, MatrixB rows: %u\n" RESET, cols(MatrixA), rows(MatrixB));
         exit(-1);
     }
-
     MatrixC = createMatrix(rows(MatrixA), cols(MatrixB));
-
-    printMatrix(MatrixA);
-    printMatrix(MatrixB);
 
     for (i = 0; i < rows(MatrixA); i++) {
         for (j = 0; j < cols(MatrixB); j++) {

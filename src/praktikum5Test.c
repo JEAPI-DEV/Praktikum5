@@ -22,6 +22,8 @@
 static void testPraktikumV();
 /** forward declaration command line evaluation                    */
 static void evaluateCmdLine(int argc, char **argv);
+static void testOutofBoundsM();
+static void testOutofBoundsV();
 /**
  * the main bootstrap starting point
  * evaluating the command line arguments.
@@ -39,7 +41,7 @@ static int lets_crash_matrix_dot_matrix = 0;
 static int lets_crash_matrix_dot_vector = 0;
 static int lets_crash_vector_dot_vector = 0;
 static int print_all = 0;
-static int test_ctor = 1;
+static int test_ctor = 0;
 
 /**
  * evaluate the command line, show help
@@ -63,6 +65,10 @@ static void evaluateCmdLine(int argc, char **argv) {
 				test_ctor = 1;
 			} else if (strcmp("PRINT", argv[j]) == 0) {
 				print_all = 1;
+			} else if (strcmp("OUTOFBOUNDS_M", argv[j]) == 0) {
+				testOutofBoundsM();
+			} else if (strcmp("OUTOFBOUNDS_V", argv[j]) == 0) {
+				testOutofBoundsV();
 			} else {
 				static char *options[] = { "MpM: test matrix + matrix crash",
 						"MxM: test matrix * matrix crash",
@@ -185,6 +191,26 @@ static void testWrongPlusVector() {
 	END("ERROR should not be reached!");
 	assert(0);
 }
+
+/** test vector addition with wrong dimensions */
+static void testOutofBoundsM() {
+	matrix a;
+	BEG("Test Matrix Bounds");
+	a = createMatrix(5, 5);
+	getEntry(a, 6, 5);
+	END("ERROR should not be reached!");
+	assert(0);
+}
+
+static void testOutofBoundsV() {
+	vector b;
+	BEG("Test Vector Bounds");
+	b = createVector(5);
+	getValue(b, 6);
+	END("ERROR should not be reached!");
+	assert(0);
+}
+
 /** test vector scalar product with wrong dimensions */
 static void testWrongDotVector() {
 	vector a, b;
