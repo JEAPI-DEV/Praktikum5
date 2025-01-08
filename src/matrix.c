@@ -24,25 +24,25 @@ void printMatrix(matrix Matrix) {
     printf("\n");
 }
 
-matrix createMatrix(unsigned short n, unsigned short m) {
+matrix createMatrix(unsigned short rows, unsigned short cols) {
     double *dataBlock;
     unsigned short i;
-    size_t row_pointers_size = n * sizeof(double*);
-    size_t data_block_size = n * m * sizeof(double);
+    size_t row_pointers_size = rows * sizeof(double*);
+    size_t data_block_size = rows * cols * sizeof(double);
     matrix Matrix = calloc(1, sizeof(struct matrix_struct) + row_pointers_size + data_block_size);
 
     if (!Matrix) {
         printf(RED "Memory allocation failed for matrix structure and data.\n" RESET);
         exit(-1);
     }
-    Matrix->rows = n;
-    Matrix->cols = m;
+    Matrix->rows = rows;
+    Matrix->cols = cols;
 
     Matrix->data = (double**)(Matrix + 1);
-    dataBlock = (double*)(Matrix->data + n);
+    dataBlock = (double*)(Matrix->data + rows);
 
-    for (i = 0; i < n; i++) {
-        Matrix->data[i] = dataBlock + i * m;
+    for (i = 0; i < rows; i++) {
+            Matrix->data[i] = dataBlock + i * cols;
     }
 
     return Matrix;

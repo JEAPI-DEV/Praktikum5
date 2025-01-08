@@ -39,7 +39,7 @@ static int lets_crash_matrix_dot_matrix = 0;
 static int lets_crash_matrix_dot_vector = 0;
 static int lets_crash_vector_dot_vector = 0;
 static int print_all = 0;
-static int test_ctor = 0;
+static int test_ctor = 1;
 
 /**
  * evaluate the command line, show help

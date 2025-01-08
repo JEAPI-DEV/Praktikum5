@@ -2,16 +2,19 @@
 #include <malloc.h>
 #include <stdlib.h>
 
+#define RED "\033[31m"
+#define RESET "\033[0m"
+
 void withinBoundCheck(vector Vector, unsigned short j) {
     if (j >= size(Vector)) {
-        fprintf(stderr, "Error: Index out of bounds!\n");
+        printf(RED "Error: Index out of bounds!\n" RESET);
         exit(-1);
     }
 }
 
 void vectorSameSizeCheck(vector VectorA, vector VectorB, char* operation) {
     if (size(VectorA) != size(VectorB)) {
-        fprintf(stderr, "Error: Vector size does not match %s!\n", operation);
+        printf(RED "Error: Vector size does not match %s!\n" RESET, operation);
         exit(-1);
     }
 }
@@ -25,7 +28,7 @@ vector createVector(unsigned short n) {
     size_t vector_size = n * sizeof(double);
     vector Vector = calloc(1, sizeof(struct vector_struct) + vector_size);
     if (!Vector) {
-        fprintf(stderr, "Memory allocation failed for vector structure and data.\n");
+        printf(RED "Memory allocation failed for vector structure and data.\n" RESET);
         exit(-1);
     }
     Vector->size = n;

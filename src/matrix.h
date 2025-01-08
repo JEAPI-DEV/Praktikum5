@@ -14,11 +14,11 @@
 typedef struct matrix_struct *matrix;
 
 /** create a (zero filled) NxM double matrix.
- *  @param n the number of rows, with 0<n
- *  @param m the number of columns with 0<m
+ *  @param rows the number of rows, with 0<n
+ *  @param cols the number of columns with 0<m
  *  @return a NxM double matrix reference
  */
-matrix createMatrix(unsigned short n, unsigned short m);
+matrix createMatrix(unsigned short rows, unsigned short cols);
 
 /**
  * remove a matrix freeing allocated memory.
