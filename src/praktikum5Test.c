@@ -76,7 +76,9 @@ static void evaluateCmdLine(int argc, char **argv) {
 						"VpV: test vector + vector crash",
 						"VxV: test vector * vector crash", "",
 						"INF: test malloc struct storage",
-						"PRINT: show intermediate results" };
+						"PRINT: show intermediate results",
+				    "OUTOFBOUNDS_M: test matrix out of bounds access",
+                    "OUTOFBOUNDS_V: test vector out of bounds access", ""};
 				int j, n = sizeof(options) / sizeof(char*);
 				printf("HELP\n");
 				printf("----------------------------------------\n");

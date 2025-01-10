@@ -7,7 +7,7 @@
 
 void withinBoundCheck(vector Vector, unsigned short j) {
     if (j >= size(Vector)) {
-        printf(RED "Error: Index out of bounds!\n" RESET);
+        printf(RED "Error: Index out of bounds! %d from Vector with size %d \n" RESET, j, size(Vector));
         exit(-1);
     }
 }
